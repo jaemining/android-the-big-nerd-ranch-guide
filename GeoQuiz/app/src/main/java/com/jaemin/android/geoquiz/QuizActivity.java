@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
+    private static final String TAG = "QuizActivity";
+
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;

@@ -109,7 +109,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        Log.i(TAG, "onSaveInstanceState");
+        Log.i(TAG, "----- onSaveInstanceState -----");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 

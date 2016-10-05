@@ -98,7 +98,11 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
-        
+
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
         updateQuestion();
     }
 

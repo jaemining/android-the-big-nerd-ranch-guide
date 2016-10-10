@@ -22,7 +22,7 @@
         android:padding="24dp"
         tools:text="정답"/>
 
-    <TextView
+    <Button
         android:id="@+id/showAnswerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

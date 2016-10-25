@@ -18,8 +18,10 @@ public class CheatActivity extends AppCompatActivity {
     private static final String EXTRA_ANSWER_SHOWN = "com.jaemin.android.geoquiz.answer_shown";
 
     private boolean mAnswerIsTrue;
+
     private TextView mAnswerTextView;
     private Button mShowAnswer;
+    private TextView mApiLevelTextView;
 
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent i = new Intent(packageContext, CheatActivity.class);
@@ -69,6 +71,12 @@ public class CheatActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mApiLevelTextView = (TextView) findViewById(R.id.textView_apiLevel);
+
+        int apiLevel = Build.VERSION.SDK_INT;
+        mApiLevelTextView.setText("이 기기의 API 레벨 : " + String.format("%d", apiLevel));
+
 
     }
 

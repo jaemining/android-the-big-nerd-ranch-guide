@@ -15,8 +15,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CrimeActivity">
-            <intent-filter>
-            </intent-filter>
         </activity>
     </application>
 

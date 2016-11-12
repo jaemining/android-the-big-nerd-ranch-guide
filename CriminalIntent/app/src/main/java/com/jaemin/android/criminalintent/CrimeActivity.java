@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class CrimeActivity extends SingleFragmentActivity { // 추상클래스 사용하기
 
-    public static final String EXTRA_CRIME_ID = "com.jaemin.android.criminalintent.crime_id";
+    private static final String EXTRA_CRIME_ID = "com.jaemin.android.criminalintent.crime_id";
 
     public static Intent newIntent(Context packageContext, UUID crimeID) {
         Intent intent = new Intent(packageContext, CrimeActivity.class);
@@ -21,6 +21,8 @@ public class CrimeActivity extends SingleFragmentActivity { // 추상클래스 �
 
     @Override
     protected Fragment createFragment() {
-        return new CrimeFragment();
+        UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
+
+        return CrimeFragment.newInstance(crimeId);
     }
 }

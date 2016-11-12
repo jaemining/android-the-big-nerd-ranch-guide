@@ -19,18 +19,30 @@ import java.util.UUID;
  */
 
 public class CrimeFragment extends Fragment { // Fragment의 서브 클래스로 변경하기
+
+    private static final String ARG_CRIME_ID = "crime_id";
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
 
+    public static CrimeFragment newInstance(UUID crimeId) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CRIME_ID, crimeId);
+
+        CrimeFragment fragment = new CrimeFragment();
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // CrimeFragment가 getActivity()를 사용해서 CrimeActivity의 인텐트를 바로 액세스하는 방법
-        UUID crimeID = (UUID) getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
-        mCrime = CrimeLab.get(getActivity()).getCrime(crimeID);
+        UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
+        
+        mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }
 
     @Override

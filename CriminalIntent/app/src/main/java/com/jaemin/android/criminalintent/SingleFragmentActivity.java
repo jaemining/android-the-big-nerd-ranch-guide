@@ -2,14 +2,14 @@ package com.jaemin.android.criminalintent;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Jaemin on 2016. 10. 31..
  */
 
-public abstract class SingleFragmentActivity extends FragmentActivity {
+public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     // fragment 인스턴스에 사용되는 메서드
     // SingleFragmentActivity의 서브 클래스에서는 이 메서드를 구현하여 액티비티가 호스팅하는 fragment 인스턴스를 반환해야 한다

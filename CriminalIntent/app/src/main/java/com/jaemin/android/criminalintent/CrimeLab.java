@@ -1,6 +1,9 @@
 package com.jaemin.android.criminalintent;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.jaemin.android.criminalintent.database.CrimeBaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,9 @@ public class CrimeLab {
     // List 인터페이스는 주로 자바의 배열을 사용해서 리스트 요소를 저장하는 ArrayList로 구현된다
     private List<Crime> mCrimes;
 
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
+
     public static CrimeLab get(Context context) {
         if (sCrimeLab == null) {
             sCrimeLab = new CrimeLab(context);
@@ -29,6 +35,10 @@ public class CrimeLab {
     }
 
     private CrimeLab(Context context) {
+        // SQLiteDatabase 열기
+        mContext = context.getApplicationContext();
+        mDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
+
         mCrimes = new ArrayList<>();
     }
 

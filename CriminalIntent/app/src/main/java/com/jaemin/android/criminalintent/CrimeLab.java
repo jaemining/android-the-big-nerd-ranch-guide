@@ -30,13 +30,10 @@ public class CrimeLab {
 
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
+    }
 
-        for (int i=0; i<100; i++) { // 데이터 100개 생성
-            Crime crime = new Crime();
-            crime.setTitle("범죄 #" + i);
-            crime.setSolved(i%2 == 0); // 짝수 번째 요소에는 true를 임의 설정한다
-            mCrimes.add(crime);
-        }
+    public void addCrime(Crime c) { // 새로운 범죄를 리스트에 추가하기위해 addCrime() 추가
+        mCrimes.add(c);
     }
 
     public List<Crime> getCrimes() { // 생성된 List를 반환

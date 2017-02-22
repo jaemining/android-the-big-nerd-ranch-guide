@@ -38,6 +38,9 @@ public class CrimeLab {
     }
 
     public void addCrime(Crime c) { // 새로운 범죄를 리스트에 추가하기위해 addCrime() 추가
+        // 행 추가하기
+        ContentValues values = getContentValuse(c);
+        mDatabase.insert(CrimeTable.NAME, null, values);
     }
 
     public List<Crime> getCrimes() { // 생성된 List를 반환

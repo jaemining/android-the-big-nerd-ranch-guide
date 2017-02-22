@@ -7,6 +7,9 @@ import com.jaemin.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import com.jaemin.android.criminalintent.Crime;
 
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * Created by Jaemin on 2017. 2. 22..
  */
@@ -21,6 +24,12 @@ public class CrimeCursorWrapper extends CursorWrapper {
         String title = getString(getColumnIndex(CrimeTable.Cols.TITLE));
         long date = getLong(getColumnIndex(CrimeTable.Cols.DATE));
         int isSolved = getInt(getColumnIndex(CrimeTable.Cols.SOLVED));
-        return null;
+
+        Crime crime = new Crime(UUID.fromString(uuidString));
+        crime.setTitle(title);
+        crime.setDate(new Date(date));
+        crime.setSolved(isSolved != 0);
+
+        return crime;
     }
 }

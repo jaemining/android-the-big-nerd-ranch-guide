@@ -2,6 +2,7 @@ package com.jaemin.android.criminalintent;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.jaemin.android.criminalintent.database.CrimeBaseHelper;
@@ -68,5 +69,18 @@ public class CrimeLab {
         values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1 : 0);
 
         return values;
+    }
+
+    private Cursor queryCrimes(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                CrimeTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null
+        );
+        return cursor;
     }
 }

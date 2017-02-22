@@ -9,4 +9,6 @@
     <string name="show_subtitle">subtitle 보기</string>
     <string name="hide_subtitle">subtitle 감추기</string>
     <string name="subtitle_format">%1$d 건</string>
+    <string name="crime_suspect_text">용의자 선택</string>
+    <string name="crime_report_text">범죄 보고서 전송</string>
 </resources>

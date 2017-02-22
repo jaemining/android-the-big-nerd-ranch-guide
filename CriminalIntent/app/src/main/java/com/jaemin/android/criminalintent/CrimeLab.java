@@ -19,11 +19,6 @@ public class CrimeLab {
 
     private static CrimeLab sCrimeLab; // static 변수의 접두사로 s를 사용
 
-    // List<E>는 지정된 타입의 객체가 저장된 순차 리스트를 지원하는 인터페이스.
-    // 이 인터페이스에는 저장된 요소(객체)를 읽거나 추가 또는 삭제하는 메서드가 정의되어 있다
-    // List 인터페이스는 주로 자바의 배열을 사용해서 리스트 요소를 저장하는 ArrayList로 구현된다
-    private List<Crime> mCrimes;
-
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
@@ -38,24 +33,16 @@ public class CrimeLab {
         // SQLiteDatabase 열기
         mContext = context.getApplicationContext();
         mDatabase = new CrimeBaseHelper(mContext).getWritableDatabase();
-
-        mCrimes = new ArrayList<>();
     }
 
     public void addCrime(Crime c) { // 새로운 범죄를 리스트에 추가하기위해 addCrime() 추가
-        mCrimes.add(c);
     }
 
     public List<Crime> getCrimes() { // 생성된 List를 반환
-        return mCrimes;
+        return new ArrayList<>();
     }
 
-    public Crime getCrime(UUID id) { // 지정된 ID를 갖는 Crime 객체를 반환
-        for (Crime crime : mCrimes) {
-            if (crime.getId().equals(id)) {
-                return crime;
-            }
-        }
+    public Crime getCrime(UUID id) {
         return null;
     }
 }

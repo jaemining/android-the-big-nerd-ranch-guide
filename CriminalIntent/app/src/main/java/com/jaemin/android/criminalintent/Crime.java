@@ -15,9 +15,11 @@ public class Crime {
     private boolean mSolved; // 범죄가 해결되었는지의 여부
 
     public Crime() {
-        // 고유한 식별자를 생성한다
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
 
+    public Crime(UUID id) {
+        mId = id;
         mDate = new Date();
     }
 

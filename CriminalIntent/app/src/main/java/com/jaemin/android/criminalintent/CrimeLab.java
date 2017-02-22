@@ -46,7 +46,21 @@ public class CrimeLab {
     }
 
     public List<Crime> getCrimes() { // 생성된 List를 반환
-        return new ArrayList<>();
+        List<Crime> crimes = new ArrayList<>();
+
+        CrimeCursorWrapper cursor = queryCrimes(null, null);
+
+        try {
+            cursor.moveToFirst(); // 첫 번째 요소로 커서 이동
+            while (!cursor.isAfterLast()) { // 쿼리 결과 데이터가 끝났는지 확인 
+                crimes.add(cursor.getCrime());
+                cursor.moveToNext(); // 다음 행으로 커서 이동
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return crimes;
     }
 
     public Crime getCrime(UUID id) {

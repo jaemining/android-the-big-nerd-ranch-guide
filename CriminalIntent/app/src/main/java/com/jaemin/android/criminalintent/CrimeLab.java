@@ -1,9 +1,11 @@
 package com.jaemin.android.criminalintent;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.jaemin.android.criminalintent.database.CrimeBaseHelper;
+import com.jaemin.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +46,15 @@ public class CrimeLab {
 
     public Crime getCrime(UUID id) {
         return null;
+    }
+
+    public static ContentValues getContentValuse(Crime crime) {
+        ContentValues values = new ContentValues();
+        values.put(CrimeTable.Cols.UUID, crime.getId().toString());
+        values.put(CrimeTable.Cols.TITLE, crime.getTitle());
+        values.put(CrimeTable.Cols.DATE, crime.getDate().getTime());
+        values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1 : 0);
+
+        return values;
     }
 }
